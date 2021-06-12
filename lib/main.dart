@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            primarySwatch: Colors.grey,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
           home: HomeScreen(),

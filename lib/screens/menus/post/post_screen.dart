@@ -1,7 +1,10 @@
 import 'package:case_devido/bloc/bloc/bloc.dart';
 import 'package:case_devido/bloc/bloc/data_bloc.dart';
 import 'package:case_devido/model/post_model.dart';
+import 'package:case_devido/screens/menus/post/widget/item_post.dart';
+import 'package:case_devido/utils/constant.dart';
 import 'package:case_devido/utils/toast.dart';
+import 'package:case_devido/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,17 +44,25 @@ class _PostScreenState extends State<PostScreen> {
         bloc: _dataBloc,
         builder: (context, state) {
           return Scaffold(
+            backgroundColor: Colors.white,
             appBar: AppBar(
-              title: Text("Post"),
+              backgroundColor: Colors.white,
+              centerTitle: true,
+              elevation: 0,
+              title: Text(
+                "Post",
+                style: TextStyle(
+                    color: HexColor(ColorPalette['ColorPrimaryDark'])),
+              ),
             ),
             body: _isLoading
                 ? Center(
-                    child: CircularProgressIndicator(),
-                  )
+              child: CircularProgressIndicator(),
+            )
                 : ListView.builder(
-                    itemCount: _myDataPost.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Text(_myDataPost[index].title);
+                itemCount: _myDataPost.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ItemPost(data: _myDataPost[index]);
                     }),
           );
         },

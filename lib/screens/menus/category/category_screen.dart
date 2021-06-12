@@ -37,6 +37,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
+              backgroundColor: Colors.white,
               title: Text("Category"),
             ),
             body: _isLoading

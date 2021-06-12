@@ -121,13 +121,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.3"
-  loading_overlay:
-    dependency: "direct main"
-    description:
-      name: loading_overlay
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.1"
   matcher:
     dependency: transitive
     description:
@@ -163,6 +156,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.3.3"
+  shimmer:
+    dependency: "direct main"
+    description:
+      name: shimmer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   sky_engine:
     dependency: transitive
     description: flutter
