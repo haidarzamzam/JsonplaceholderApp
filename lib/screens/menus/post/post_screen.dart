@@ -1,12 +1,14 @@
 import 'package:case_devido/bloc/bloc/bloc.dart';
 import 'package:case_devido/bloc/bloc/data_bloc.dart';
 import 'package:case_devido/model/post_model.dart';
-import 'package:case_devido/screens/menus/post/widget/item_post.dart';
 import 'package:case_devido/utils/constant.dart';
 import 'package:case_devido/utils/toast.dart';
 import 'package:case_devido/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'widget/item_post.dart';
+import 'widget/item_shimmer_post.dart';
 
 class PostScreen extends StatefulWidget {
   const PostScreen({key}) : super(key: key);
@@ -56,13 +58,11 @@ class _PostScreenState extends State<PostScreen> {
               ),
             ),
             body: _isLoading
-                ? Center(
-              child: CircularProgressIndicator(),
-            )
+                ? ItemShimmerPost()
                 : ListView.builder(
-                itemCount: _myDataPost.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ItemPost(data: _myDataPost[index]);
+                    itemCount: _myDataPost.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ItemPost(data: _myDataPost[index]);
                     }),
           );
         },
