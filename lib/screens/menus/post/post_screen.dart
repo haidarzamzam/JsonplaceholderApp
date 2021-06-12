@@ -19,14 +19,17 @@ class PostScreen extends StatefulWidget {
 
 class _PostScreenState extends State<PostScreen> {
   DataBloc _dataBloc;
-  List<PostModel> _myDataPost;
-  bool _isLoading = true;
+  List<PostModel> _myDataPost = [];
+  bool _isLoadingData = true;
+  bool _isLoadingPagination = false;
+  bool _isDataMax = false;
+  int startPost = 0;
 
   @override
   void initState() {
     super.initState();
     _dataBloc = BlocProvider.of<DataBloc>(context);
-    _dataBloc.add(GetDataPostEvent(start: "0", limit: "10"));
+    _dataBloc.add(GetDataPostEvent(start: startPost, limit: 10));
   }
 
   @override
@@ -35,10 +38,23 @@ class _PostScreenState extends State<PostScreen> {
       bloc: _dataBloc,
       listener: (context, state) async {
         if (state is GetDataPostSuccessState) {
-          _isLoading = false;
-          _myDataPost = state.result;
+          _isLoadingData = false;
+          _isLoadingPagination = false;
+
+          if (state.result.isEmpty) {
+            _isDataMax = true;
+            ToastUtils.show("No data anymore :(");
+          } else {
+            startPost += 10;
+            if (_myDataPost.isEmpty) {
+              _myDataPost = state.result;
+            } else {
+              state.result.forEach((PostModel data) => _myDataPost.add(data));
+            }
+          }
         } else if (state is GetDataPostFailedState) {
-          _isLoading = false;
+          _isLoadingData = false;
+          _isLoadingPagination = false;
           ToastUtils.show(state.message);
         }
       },
@@ -57,13 +73,47 @@ class _PostScreenState extends State<PostScreen> {
                     color: HexColor(ColorPalette['ColorPrimaryDark'])),
               ),
             ),
-            body: _isLoading
-                ? ItemShimmerPost()
-                : ListView.builder(
-                    itemCount: _myDataPost.length,
+            body: _isLoadingData
+                ? ListView.builder(
+                    itemCount: 10,
                     itemBuilder: (BuildContext context, int index) {
-                      return ItemPost(data: _myDataPost[index]);
-                    }),
+                      return ItemShimmerPost();
+                    })
+                : Column(
+                    children: [
+                      NotificationListener<ScrollEndNotification>(
+                        onNotification: (scrollEnd) {
+                          var metrics = scrollEnd.metrics;
+                          if (metrics.atEdge) {
+                            if (metrics.pixels != 0) {
+                              setState(() {
+                                if (_isDataMax) {
+                                  ToastUtils.show("No data anymore :(");
+                                } else {
+                                  _isLoadingPagination = true;
+                                  _dataBloc.add(GetDataPostEvent(
+                                      start: startPost, limit: 10));
+                                }
+                              });
+                            }
+                          }
+                          return true;
+                        },
+                        child: Expanded(
+                          child: ListView.builder(
+                              physics: ClampingScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: _myDataPost.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return ItemPost(data: _myDataPost[index]);
+                              }),
+                        ),
+                      ),
+                      Visibility(
+                          visible: _isLoadingPagination,
+                          child: ItemShimmerPost())
+                    ],
+                  ),
           );
         },
       ),

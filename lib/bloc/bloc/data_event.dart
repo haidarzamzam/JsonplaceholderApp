@@ -8,8 +8,8 @@ abstract class DataEvent extends Equatable {
 }
 
 class GetDataPostEvent extends DataEvent {
-  final String start;
-  final String limit;
+  final int start;
+  final int limit;
 
   GetDataPostEvent({this.start, this.limit});
 

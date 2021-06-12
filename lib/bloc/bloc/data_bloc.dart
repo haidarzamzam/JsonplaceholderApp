@@ -24,8 +24,8 @@ class DataBloc extends Bloc<DataEvent, DataState> {
     yield DataInitial();
 
     Map<String, dynamic> payload = {
-      'start': event.start.trim(),
-      'limit': event.limit.trim(),
+      'start': event.start,
+      'limit': event.limit,
     };
 
     List<PostModel> response;
