@@ -70,6 +70,7 @@ class _PostScreenState extends State<PostScreen> {
               title: Text(
                 "Post",
                 style: TextStyle(
+                    fontWeight: FontWeight.w700,
                     color: HexColor(ColorPalette['ColorPrimaryDark'])),
               ),
             ),

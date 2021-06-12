@@ -1,6 +1,8 @@
 import 'package:case_devido/bloc/bloc/bloc.dart';
 import 'package:case_devido/model/category_model.dart';
 import 'package:case_devido/screens/menus/category/widget/item_category.dart';
+import 'package:case_devido/utils/constant.dart';
+import 'package:case_devido/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,7 +41,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
-              title: Text("Category"),
+              title: Text(
+                "Post",
+                style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: HexColor(ColorPalette['ColorPrimaryDark'])),
+              ),
+              elevation: 0,
             ),
             body: _isLoading
                 ? Center(
