@@ -1,6 +1,8 @@
 import 'package:case_devido/app.dart';
+import 'package:case_devido/bloc/bloc/bloc.dart';
 import 'package:case_devido/utils/endpoint.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'screens/home_screen.dart';
 
@@ -21,13 +23,17 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: HomeScreen(),
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider<DataBloc>(create: (BuildContext context) => DataBloc()),
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          home: HomeScreen(),
+        ));
   }
 }

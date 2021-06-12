@@ -1,3 +1,5 @@
+import 'package:case_devido/screens/menus/category_screen.dart';
+import 'package:case_devido/screens/menus/post_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,16 +13,10 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Post',
-      style: optionStyle,
-    ),
-    Text(
-      'Category',
-      style: optionStyle,
-    ),
+    PostScreen(),
+    CategoryScreen()
   ];
 
   void _onItemTapped(int index) {
