@@ -1,5 +1,6 @@
 import 'package:case_devido/bloc/bloc/bloc.dart';
 import 'package:case_devido/model/category_model.dart';
+import 'package:case_devido/screens/menus/category/widget/item_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,7 +48,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 : ListView.builder(
                     itemCount: _myDataCategory.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Text(_myDataCategory[index].title);
+                      return ItemCategory(data: _myDataCategory[index]);
                     }),
           );
         },

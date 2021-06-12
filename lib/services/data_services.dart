@@ -18,8 +18,6 @@ Future<List<PostModel>> getDataPost(Map<String, dynamic> payload) async {
     queryParameters: {"_start": payload['start'], "_limit": payload['limit']},
   );
 
-  print(payload['start']);
-
   if (response.statusCode == 200) {
     final List parsedList = response.data;
     return parsedList.map((e) => PostModel.fromJson(e)).toList();
