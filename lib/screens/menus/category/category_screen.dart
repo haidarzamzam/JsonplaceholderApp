@@ -2,6 +2,7 @@ import 'package:case_devido/bloc/bloc/bloc.dart';
 import 'package:case_devido/model/category_model.dart';
 import 'package:case_devido/screens/menus/category/widget/item_category.dart';
 import 'package:case_devido/utils/constant.dart';
+import 'package:case_devido/utils/toast.dart';
 import 'package:case_devido/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,12 +18,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
   DataBloc _dataBloc;
   List<CategoryModel> _myDataCategory;
   bool _isLoading = true;
+  bool _isVisibleClear = false;
+  TextEditingController searchController = new TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _dataBloc = BlocProvider.of<DataBloc>(context);
-    _dataBloc.add(GetDataCategoryEvent());
+    _dataBloc.add(GetDataCategoryEvent(keyword: ""));
   }
 
   @override
@@ -30,9 +33,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return BlocListener(
       bloc: _dataBloc,
       listener: (context, state) async {
-        if (state is GetDataCategoryState) {
+        if (state is GetDataCategorySuccessState) {
           _isLoading = false;
           _myDataCategory = state.result;
+        } else if (state is GetDataPostFailedState) {
+          _isLoading = false;
+          ToastUtils.show(state.message);
         }
       },
       child: BlocBuilder(
@@ -40,27 +46,73 @@ class _CategoryScreenState extends State<CategoryScreen> {
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
-              backgroundColor: Colors.white,
+              backgroundColor: HexColor(ColorPalette['ColorAccent']),
               title: Text(
-                "Post",
+                "Category",
                 style: TextStyle(
                     fontWeight: FontWeight.w700,
                     color: HexColor(ColorPalette['ColorPrimaryDark'])),
               ),
               elevation: 0,
             ),
-            body: _isLoading
-                ? Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : ListView.builder(
-                    itemCount: _myDataCategory.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ItemCategory(data: _myDataCategory[index]);
-                    }),
+            body: Column(
+              children: [
+                Container(
+                  color: HexColor(ColorPalette['ColorAccent']),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      child: ListTile(
+                        leading: Icon(Icons.search),
+                        title: TextField(
+                          controller: searchController,
+                          decoration: InputDecoration(
+                              hintText: 'Search by title . . .',
+                              border: InputBorder.none),
+                          onChanged: onSearchTextChanged,
+                        ),
+                        trailing: Visibility(
+                          visible: _isVisibleClear,
+                          child: IconButton(
+                            icon: Icon(Icons.cancel),
+                            onPressed: () {
+                              searchController.clear();
+                              onSearchTextChanged('');
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                _isLoading
+                    ? Expanded(
+                        child: Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      )
+                    : Expanded(
+                        child: ListView.builder(
+                            itemCount: _myDataCategory.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return ItemCategory(data: _myDataCategory[index]);
+                            }),
+                      ),
+              ],
+            ),
           );
         },
       ),
     );
+  }
+
+  onSearchTextChanged(String text) async {
+    setState(() {
+      if (text != "" || text.isNotEmpty)
+        _isVisibleClear = true;
+      else
+        _isVisibleClear = false;
+      _dataBloc.add(GetDataCategoryEvent(keyword: text));
+    });
   }
 }

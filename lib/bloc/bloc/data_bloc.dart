@@ -41,10 +41,16 @@ class DataBloc extends Bloc<DataEvent, DataState> {
 
   Stream<DataState> _getDataCategory(GetDataCategoryEvent event) async* {
     yield DataInitial();
+
+    Map<String, dynamic> payload = {'keyword': event.keyword};
+
     List<CategoryModel> response;
 
-    response = await getDataCategory();
-
-    yield GetDataCategoryState(result: response);
+    try {
+      response = await getDataCategory(payload);
+      yield GetDataCategorySuccessState(result: response);
+    } catch (err) {
+      yield GetDataCategoryFailedState(message: err?.toString());
+    }
   }
 }

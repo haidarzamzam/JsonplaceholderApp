@@ -18,7 +18,9 @@ class GetDataPostEvent extends DataEvent {
 }
 
 class GetDataCategoryEvent extends DataEvent {
-  GetDataCategoryEvent();
+  final String keyword;
+
+  GetDataCategoryEvent({this.keyword});
 
   @override
   String toString() => 'GetDataCategoryEvent';

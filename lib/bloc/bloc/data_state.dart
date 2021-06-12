@@ -23,8 +23,14 @@ class GetDataPostFailedState extends DataState {
   GetDataPostFailedState({this.message});
 }
 
-class GetDataCategoryState extends DataState {
+class GetDataCategorySuccessState extends DataState {
   final List<CategoryModel> result;
 
-  GetDataCategoryState({this.result});
+  GetDataCategorySuccessState({this.result});
+}
+
+class GetDataCategoryFailedState extends DataState {
+  final String message;
+
+  GetDataCategoryFailedState({this.message});
 }

@@ -64,7 +64,7 @@ class _PostScreenState extends State<PostScreen> {
           return Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
-              backgroundColor: Colors.white,
+              backgroundColor: HexColor(ColorPalette['ColorAccent']),
               centerTitle: true,
               elevation: 0,
               title: Text(

@@ -18,15 +18,38 @@ Future<List<PostModel>> getDataPost(Map<String, dynamic> payload) async {
     queryParameters: {"_start": payload['start'], "_limit": payload['limit']},
   );
 
+  List data = [];
   if (response.statusCode == 200) {
     final List parsedList = response.data;
-    return parsedList.map((e) => PostModel.fromJson(e)).toList();
+    data = parsedList.map((e) => PostModel.fromJson(e)).toList();
   }
+
+  return data;
 }
 
-Future<List<CategoryModel>> getDataCategory() async {
-  final List parsedList =
+Future<List<CategoryModel>> getDataCategory(
+    Map<String, dynamic> payload) async {
+  List<CategoryModel> tempList = [];
+  List<CategoryModel> categoryList = [];
+  List parsedList =
       json.decode(await rootBundle.loadString('assets/data/category.json'));
 
-  return parsedList.map((e) => CategoryModel.fromJson(e)).toList();
+  tempList = parsedList.map((e) => CategoryModel.fromJson(e)).toList();
+  categoryList = tempList;
+
+  if (payload['keyword'] == "") {
+    categoryList = tempList;
+  } else {
+    List<CategoryModel> filteredList = [];
+
+    tempList.map((e) {
+      if (e.title.toLowerCase().contains(payload['keyword'].toLowerCase())) {
+        filteredList.add(e);
+      }
+    }).toList();
+
+    categoryList = filteredList;
+  }
+
+  return categoryList;
 }
