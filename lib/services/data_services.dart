@@ -12,15 +12,16 @@ import '../app.dart';
 
 Dio _dio = App().dio;
 
-Future<PostModel> getDataPost(Map<String, dynamic> payload) async {
+Future<List<PostModel>> getDataPost(Map<String, dynamic> payload) async {
   Response response = await _dio.get(
-    Endpoint.post,
+    Endpoint.postData,
     queryParameters: {"_start": payload['start'], "_limit": payload['limit']},
   );
 
   if (response.statusCode == 200) {
     print(response.data);
-    return PostModel.fromJson(response.data);
+    final List parsedList = response.data;
+    return parsedList.map((e) => PostModel.fromJson(e)).toList();
   }
 }
 

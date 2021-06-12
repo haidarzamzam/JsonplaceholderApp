@@ -44,7 +44,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     child: CircularProgressIndicator(),
                   )
                 : ListView.builder(
-                    itemCount: _myDataCategory?.length,
+                    itemCount: _myDataCategory.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Text(_myDataCategory[index].title);
                     }),
