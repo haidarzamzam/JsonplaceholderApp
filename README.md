@@ -1,4 +1,4 @@
-# case_devido
+# jsonplaceholder_app
 
 A new Flutter application.
 

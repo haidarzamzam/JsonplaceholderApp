@@ -1,8 +1,8 @@
-import 'package:case_devido/model/post_model.dart';
-import 'package:case_devido/screens/menus/post/detail_post_screen.dart';
-import 'package:case_devido/utils/constant.dart';
-import 'package:case_devido/utils/util.dart';
 import 'package:flutter/material.dart';
+import 'package:jsonplaceholder_app/model/post_model.dart';
+import 'package:jsonplaceholder_app/screens/menus/post/detail_post_screen.dart';
+import 'package:jsonplaceholder_app/utils/constant.dart';
+import 'package:jsonplaceholder_app/utils/util.dart';
 
 class ItemPost extends StatelessWidget {
   const ItemPost({

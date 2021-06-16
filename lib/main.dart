@@ -1,8 +1,8 @@
-import 'package:case_devido/app.dart';
-import 'package:case_devido/bloc/bloc/bloc.dart';
-import 'package:case_devido/utils/endpoint.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jsonplaceholder_app/app.dart';
+import 'package:jsonplaceholder_app/bloc/bloc/bloc.dart';
+import 'package:jsonplaceholder_app/utils/endpoint.dart';
 
 import 'screens/home_screen.dart';
 

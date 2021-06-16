@@ -1,12 +1,12 @@
 import 'dart:async' show Future;
 import 'dart:convert';
 
-import 'package:case_devido/model/category_model.dart';
-import 'package:case_devido/model/post_model.dart';
-import 'package:case_devido/utils/endpoint.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/services.dart';
+import 'package:jsonplaceholder_app/model/category_model.dart';
+import 'package:jsonplaceholder_app/model/post_model.dart';
+import 'package:jsonplaceholder_app/utils/endpoint.dart';
 
 import '../app.dart';
 

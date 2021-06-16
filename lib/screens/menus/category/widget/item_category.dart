@@ -1,7 +1,7 @@
-import 'package:case_devido/model/category_model.dart';
-import 'package:case_devido/utils/constant.dart';
-import 'package:case_devido/utils/util.dart';
 import 'package:flutter/material.dart';
+import 'package:jsonplaceholder_app/model/category_model.dart';
+import 'package:jsonplaceholder_app/utils/constant.dart';
+import 'package:jsonplaceholder_app/utils/util.dart';
 
 import 'chip_category.dart';
 

@@ -1,6 +1,6 @@
-import 'package:case_devido/utils/toast.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jsonplaceholder_app/utils/toast.dart';
 
 import 'bloc/bloc_delegate.dart';
 

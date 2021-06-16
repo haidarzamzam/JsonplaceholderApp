@@ -1,7 +1,7 @@
-import 'package:case_devido/model/post_model.dart';
-import 'package:case_devido/utils/constant.dart';
-import 'package:case_devido/utils/util.dart';
 import 'package:flutter/material.dart';
+import 'package:jsonplaceholder_app/model/post_model.dart';
+import 'package:jsonplaceholder_app/utils/constant.dart';
+import 'package:jsonplaceholder_app/utils/util.dart';
 
 class DetailPostScreen extends StatelessWidget {
   const DetailPostScreen({Key key, this.item}) : super(key: key);

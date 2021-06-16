@@ -1,9 +1,9 @@
-import 'package:case_devido/bloc/bloc/bloc.dart';
-import 'package:case_devido/model/category_model.dart';
-import 'package:case_devido/screens/menus/category/widget/item_category.dart';
-import 'package:case_devido/utils/constant.dart';
-import 'package:case_devido/utils/toast.dart';
-import 'package:case_devido/utils/util.dart';
+import 'package:jsonplaceholder_app/bloc/bloc/bloc.dart';
+import 'package:jsonplaceholder_app/model/category_model.dart';
+import 'package:jsonplaceholder_app/screens/menus/category/widget/item_category.dart';
+import 'package:jsonplaceholder_app/utils/constant.dart';
+import 'package:jsonplaceholder_app/utils/toast.dart';
+import 'package:jsonplaceholder_app/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,8 +1,8 @@
-import 'package:case_devido/screens/menus/category/category_screen.dart';
-import 'package:case_devido/screens/menus/post/post_screen.dart';
-import 'package:case_devido/utils/constant.dart';
-import 'package:case_devido/utils/util.dart';
 import 'package:flutter/material.dart';
+import 'package:jsonplaceholder_app/screens/menus/category/category_screen.dart';
+import 'package:jsonplaceholder_app/screens/menus/post/post_screen.dart';
+import 'package:jsonplaceholder_app/utils/constant.dart';
+import 'package:jsonplaceholder_app/utils/util.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);

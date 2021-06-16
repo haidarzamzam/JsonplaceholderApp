@@ -1,4 +1,4 @@
-package com.haidev.case_devido
+package com.haidev.jsonplaceholder_app
 
 import io.flutter.embedding.android.FlutterActivity
 

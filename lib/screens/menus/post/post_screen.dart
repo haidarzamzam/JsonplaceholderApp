@@ -1,11 +1,11 @@
-import 'package:case_devido/bloc/bloc/bloc.dart';
-import 'package:case_devido/bloc/bloc/data_bloc.dart';
-import 'package:case_devido/model/post_model.dart';
-import 'package:case_devido/utils/constant.dart';
-import 'package:case_devido/utils/toast.dart';
-import 'package:case_devido/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jsonplaceholder_app/bloc/bloc/bloc.dart';
+import 'package:jsonplaceholder_app/bloc/bloc/data_bloc.dart';
+import 'package:jsonplaceholder_app/model/post_model.dart';
+import 'package:jsonplaceholder_app/utils/constant.dart';
+import 'package:jsonplaceholder_app/utils/toast.dart';
+import 'package:jsonplaceholder_app/utils/util.dart';
 
 import 'widget/item_post.dart';
 import 'widget/item_shimmer_post.dart';

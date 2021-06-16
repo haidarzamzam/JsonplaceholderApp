@@ -1,6 +1,6 @@
-import 'package:case_devido/utils/constant.dart';
-import 'package:case_devido/utils/util.dart';
 import 'package:flutter/material.dart';
+import 'package:jsonplaceholder_app/utils/constant.dart';
+import 'package:jsonplaceholder_app/utils/util.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class ItemShimmerPost extends StatelessWidget {

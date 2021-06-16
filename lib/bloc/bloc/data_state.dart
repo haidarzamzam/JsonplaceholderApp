@@ -1,6 +1,6 @@
-import 'package:case_devido/model/category_model.dart';
-import 'package:case_devido/model/post_model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:jsonplaceholder_app/model/category_model.dart';
+import 'package:jsonplaceholder_app/model/post_model.dart';
 
 abstract class DataState extends Equatable {
   const DataState();
