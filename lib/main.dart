@@ -9,7 +9,7 @@ import 'screens/home_screen.dart';
 Future<Null> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  App.configure(apiBaseURL: Endpoint.baseURL, appTitle: 'Github App');
+  App.configure(apiBaseURL: Endpoint.baseURL, appTitle: 'JsonPlaceHolder App');
 
   await App().init();
   runApp(MyApp());
